@@ -19,7 +19,7 @@ textarea.addEventListener("keyup", (e) => {
 const createTags = (input) => {
 	const tags = input
 		.split(",")
-		.filter((tag) => tag.trim() !== " ")
+		.filter((tag) => tag.trim() !== "")
 		.map((tag) => tag.trim()); // --> trim gets rid of whitespace
 	tagsEl.innerHTML = "";
 	tags.forEach((tag) => {
@@ -34,5 +34,31 @@ const createTags = (input) => {
 };
 
 const randomSelect = () => {
-	console.log("123");
+	const times = 30;
+
+	const interval = setInterval(() => {
+		const randomTag = pickRandomTag();
+
+		//* Highlight
+		highlightTag(randomTag);
+
+		//! Unhighlight
+		setTimeout(() => {
+			unhighlightTag(randomTag);
+		}, 100);
+	}, 100);
 };
+
+//? Random function
+
+function pickRandomTag() {
+	const tags = document.querySelector(".tag");
+	return tags[Math.floor(Math.random() * tags.length)];
+}
+
+function highlightTag(tag) {
+	tag.classList.add("highlight");
+}
+function unhighlightTag(tag) {
+	tag.classList.remove("highlight");
+}
