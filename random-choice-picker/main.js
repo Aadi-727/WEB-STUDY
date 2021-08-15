@@ -43,6 +43,12 @@ function randomSelect() {
 			unhighlightTag(randomTag);
 		}, 100);
 	}, 100);
+	setTimeout(() => {
+		clearInterval(intervel);
+		const randomTag = pickRandomTag();
+		highlightTag(randomTag);
+		textarea.disabled = false;
+	}, times * 100);
 }
 
 function pickRandomTag() {
