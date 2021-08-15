@@ -27,32 +27,26 @@ const createTags = (input) => {
 		tagEl.classList.add("tag");
 		tagEl.innerText = tag;
 		tagsEl.appendChild(tagEl);
-		if (input === "") {
-			tagsEl.innerHTML = "";
-		}
 	});
 };
 
-const randomSelect = () => {
+// random selector intervel
+
+function randomSelect() {
 	const times = 30;
-
-	const interval = setInterval(() => {
+	const intervel = setInterval(() => {
 		const randomTag = pickRandomTag();
-
-		//* Highlight
 		highlightTag(randomTag);
 
-		//! Unhighlight
+		textarea.disabled = true;
 		setTimeout(() => {
 			unhighlightTag(randomTag);
 		}, 100);
 	}, 100);
-};
-
-//? Random function
+}
 
 function pickRandomTag() {
-	const tags = document.querySelector(".tag");
+	const tags = document.querySelectorAll(".tag");
 	return tags[Math.floor(Math.random() * tags.length)];
 }
 
