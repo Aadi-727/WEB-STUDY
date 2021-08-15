@@ -45,9 +45,11 @@ function randomSelect() {
 	}, 100);
 	setTimeout(() => {
 		clearInterval(intervel);
-		const randomTag = pickRandomTag();
-		highlightTag(randomTag);
-		textarea.disabled = false;
+		setTimeout(() => {
+			const randomTag = pickRandomTag();
+			highlightTag(randomTag);
+			textarea.disabled = false;
+		}, 100);
 	}, times * 100);
 }
 
